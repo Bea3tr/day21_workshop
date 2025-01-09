@@ -22,8 +22,8 @@ public class CustomerRepository {
         List<Customer> customers = new LinkedList<>();
         SqlRowSet sqlRowSet = template.queryForRowSet(sql.getAllCustomers, limit, offset);
         while(sqlRowSet.next()) {
-            Customer cust = new Customer(sqlRowSet.getInt("id"), sqlRowSet.getString("fullname"), 
-                sqlRowSet.getString("email"));
+            Customer cust = new Customer(sqlRowSet.getInt("id"), 
+                sqlRowSet.getString("fullname"), sqlRowSet.getString("email"));
             customers.add(cust);
         }
         return customers;
@@ -32,8 +32,13 @@ public class CustomerRepository {
     // Auto mapping - for reference
     public List<Customer> getCustomersAuto() {
         List<Customer> customers = new LinkedList<>();
-        customers = template.query(sql.getAllCustomersAuto, BeanPropertyRowMapper.newInstance(Customer.class));
+        customers = template.query(sql.getAllCustomersAuto, 
+            BeanPropertyRowMapper.newInstance(Customer.class));
         return customers;
+    }
+
+    public SqlRowSet getCustomerById(int id) {
+        return template.queryForRowSet(sql.getCustomerById, id);
     }
     
 }

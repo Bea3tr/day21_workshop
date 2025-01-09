@@ -15,6 +15,7 @@ public class Customer {
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
     
+    public Customer() {}
     public Customer(int id, String fullName, String email) {
         this.id = id;
         this.fullName = fullName;
