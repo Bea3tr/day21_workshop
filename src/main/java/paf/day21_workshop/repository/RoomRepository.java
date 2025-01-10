@@ -28,5 +28,41 @@ public class RoomRepository {
         }
         return rooms;
     }
+
+    public Room getRoomById(int id) {
+        SqlRowSet rs = template.queryForRowSet(sql.getRoomById, id);
+        Room rm = new Room();
+        while(rs.next()) {
+            rm.setId(id);
+            rm.setRoomtype(rs.getString("room_type"));
+            rm.setPrice(rs.getFloat("price"));
+        }
+        return rm;
+    }
+
+    public boolean deleteRoomById(int id) {
+        int roomDeleted = template.update(sql.deleteRoomById, id);
+        if(roomDeleted > 0)
+            return true;
+        return false;
+    }
+
+    public boolean updateRoomById(Room room, int id) {
+        int roomUpdated = template.update(sql.updateCustomerById, room.getRoomtype(), 
+            room.getPrice(), id);
+        if(roomUpdated > 0)
+            return true;
+        return false;
+    }
+
+    public boolean insertNewRoom(Room room) {
+        int roomCreated = template.update(sql.insertRoom, room.getRoomtype(), room.getPrice());
+        if(roomCreated > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
     
 }

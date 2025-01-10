@@ -15,6 +15,7 @@ public class Room {
     public float getPrice() {return price;}
     public void setPrice(float price) {this.price = price;}
     
+    public Room() {};
     public Room(int id, String roomtype, float price) {
         this.id = id;
         this.roomtype = roomtype;

@@ -20,13 +20,30 @@ public class CustomerService {
         return custRepo.getCustomers(limit, offset);
     }
 
-    public Optional<Customer> getCustomerById(int id) {
-        SqlRowSet rs = custRepo.getCustomerById(id);
+    public Optional<Customer> getCustomerByIdOpt(int id) {
+        SqlRowSet rs = custRepo.getCustomerByIdOpt(id);
         if(rs.first()) {
             return Optional.of(new Customer(rs.getInt("id"), 
                 rs.getString("fullname"), rs.getString("email")));
         }
         return Optional.empty();
     }
+
+    public Customer getCustomerById(int id) {
+        return custRepo.getCustomerById(id);
+    }
+
+    public boolean deleteCustomerById(int id) {
+        return custRepo.deleteCustomerById(id);
+    }
+
+    public boolean updateCustomerById(Customer customer, int id) {
+        return custRepo.updateCustomerById(customer, id);
+    }
+
+    public boolean insertNewCustomer(Customer customer) {
+        return custRepo.insertNewCustomer(customer);
+    }
+
     
 }
