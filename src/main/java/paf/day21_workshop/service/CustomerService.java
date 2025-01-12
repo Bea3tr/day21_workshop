@@ -20,6 +20,10 @@ public class CustomerService {
         return custRepo.getCustomers(limit, offset);
     }
 
+    public List<Customer> getAllCustomersAuto() {
+        return custRepo.getCustomersAuto();
+    }
+
     public Optional<Customer> getCustomerByIdOpt(int id) {
         SqlRowSet rs = custRepo.getCustomerByIdOpt(id);
         if(rs.first()) {

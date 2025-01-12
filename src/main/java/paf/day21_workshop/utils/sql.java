@@ -14,4 +14,10 @@ public class sql {
     public static final String deleteRoomById = "DELETE FROM room WHERE id = ?";
     public static final String updateRoomById = "UPDATE room set room_type = ?, price = ? WHERE id = ?";
     public static final String insertRoom = "INSERT INTO room (room_type, price) VALUES (?, ?)";
+
+    public static final String getAllEmployees = "SELECT * FROM employee";
+    public static final String getEmployeeById = "SELECT * FROM employee where id = ?";
+    public static final String insertEmployee = "INSERT INTO employee (first_name, last_name, email, job_title, department, employment_date, salary, active) values (?, ?, ?, ?, ?, ?, ?, ?)";
+    public static final String deleteEmployeeById = "DELETE FROM employee WHERE id = ?";
+    public static final String updateEmployeeById = "UPDATE employee set first_name = ?,email = ?,job_title = ?,department = ?,employment_date = ?,salary = ?, active = ? where id = ?";
 }

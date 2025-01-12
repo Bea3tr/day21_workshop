@@ -30,6 +30,12 @@ public class CustomerRestController {
         return ResponseEntity.ok().body(customers);
     }
 
+    @GetMapping("/auto")
+    public ResponseEntity<List<Customer>> getAllCustomersAuto() {
+        List<Customer> customers = custSvc.getAllCustomersAuto();
+        return ResponseEntity.ok().body(customers);
+    }
+
     @GetMapping("/opt/{id}")
     public ResponseEntity<Customer> getCustomerByIdOpt(@PathVariable Integer id) {
         Optional<Customer> opt = custSvc.getCustomerByIdOpt(id);
